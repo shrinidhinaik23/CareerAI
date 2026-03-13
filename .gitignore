@@ -1,0 +1,9 @@
+backend/firebase-service-account.json
+backend/.env
+.env
+__pycache__/
+backend/__pycache__/
+*.pyc
+node_modules/
+frontend/node_modules/
+CHATBOT/backend/__pycache__/

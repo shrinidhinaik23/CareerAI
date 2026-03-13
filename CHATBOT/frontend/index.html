@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airesume Chatbot</title>
+  <style>
+    :root {
+      --chat-blue-bg: #eef2ff;
+      --chat-blue-text: #4f46e5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      overflow: hidden;
+    }
+
+    /* Hide old floating button completely */
+    #chat-button {
+      display: none !important;
+    }
+
+    /* Main chat container for iframe */
+    #chat-box {
+      width: 100%;
+      height: 100vh;
+      background: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #chat-header {
+      background-color: #0f172a;
+      color: white;
+      padding: 12px 16px;
+      font-weight: bold;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    #chat-messages {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      padding: 10px 14px;
+      border-radius: 18px;
+      background-color: var(--chat-blue-bg);
+      color: var(--chat-blue-text);
+      word-wrap: break-word;
+      max-width: 85%;
+      align-self: flex-end;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .message.bot {
+      background-color: #ffffff;
+      color: #111827;
+      border: 1px solid #e5e7eb;
+      align-self: flex-start;
+    }
+
+    #chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      background: white;
+      flex-shrink: 0;
+    }
+
+    #chat-input input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+    }
+
+    #chat-input button {
+      background-color: var(--chat-blue-text);
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    #chat-input button:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hidden old button -->
+  <button id="chat-button">💬</button>
+
+  <!-- embedded chat box -->
+  <div id="chat-box">
+    
+    <div id="chat-messages"></div>
+    <div id="chat-input">
+      <input type="text" id="message-input" placeholder="Type a message..." />
+      <button id="send-button">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const sendButton = document.getElementById("send-button");
+    const messageInput = document.getElementById("message-input");
+    const chatMessages = document.getElementById("chat-messages");
+
+    function appendMessage(text, sender) {
+      const msgDiv = document.createElement("div");
+      msgDiv.classList.add("message");
+      if (sender === "bot") msgDiv.classList.add("bot");
+      msgDiv.textContent = text;
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = messageInput.value.trim();
+      if (!text) return;
+
+      appendMessage(text, "user");
+      messageInput.value = "";
+
+      try {
+        const response = await fetch("http://127.0.0.1:8005/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text })
+        });
+
+        const data = await response.json();
+        appendMessage(data.reply || "No response from chatbot.", "bot");
+      } catch (error) {
+        appendMessage("Cannot connect to chatbot backend.", "bot");
+      }
+    }
+
+    sendButton.addEventListener("click", sendMessage);
+
+    messageInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    // welcome message
+    window.addEventListener("load", () => {
+      appendMessage("Hi, I’m Airesume Assistant. Ask me about resume tools, ATS, skills, or career guidance.", "bot");
+    });
+  </script>
+
+</body>
+</html>
