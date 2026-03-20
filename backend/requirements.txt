@@ -5,3 +5,6 @@ pdfplumber
 spacy
 scikit-learn
 textstat
+python-dotenv
+firebase-admin
+razorpay
