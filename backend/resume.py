@@ -29,26 +29,29 @@ from services.youtube_helper import get_youtube_playlist_count
 # =========================
 load_dotenv()
 
-RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
-RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-
-if not RAZORPAY_KEY_ID or not RAZORPAY_KEY_SECRET:
-    raise RuntimeError("Razorpay keys are missing in backend/.env")
+RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "")
+RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", "")
 
 # =========================
 # FIREBASE
 # =========================
-if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase-service-account.json")
-    firebase_admin.initialize_app(cred)
+db = None
 
-db = firestore.client()
+try:
+    if not firebase_admin._apps:
+        cred = credentials.Certificate("firebase-service-account.json")
+        firebase_admin.initialize_app(cred)
+    db = firestore.client()
+except Exception:
+    db = None
 
 # =========================
 # RAZORPAY CLIENT
 # =========================
-razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+razorpay_client = None
+if RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET:
+    razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 
 # =========================
 # FASTAPI APP
@@ -98,6 +101,9 @@ def home():
 @app.post("/create-order")
 def create_order(payload: OrderRequest):
     try:
+        if not razorpay_client:
+            raise HTTPException(status_code=503, detail="Payment service not configured")
+
         if payload.plan == "pro":
             amount = 49900
         elif payload.plan == "career_plus":
@@ -125,6 +131,8 @@ def create_order(payload: OrderRequest):
             "key": RAZORPAY_KEY_ID
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -134,6 +142,12 @@ def create_order(payload: OrderRequest):
 @app.post("/verify-payment")
 def verify_payment(payload: VerifyPaymentRequest):
     try:
+        if not RAZORPAY_KEY_SECRET:
+            raise HTTPException(status_code=503, detail="Payment verification not configured")
+
+        if not db:
+            raise HTTPException(status_code=503, detail="Database not configured")
+
         body = f"{payload.razorpay_order_id}|{payload.razorpay_payment_id}"
 
         generated_signature = hmac.new(
@@ -159,6 +173,8 @@ def verify_payment(payload: VerifyPaymentRequest):
             "message": "Payment verified and plan updated"
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -169,7 +185,7 @@ def verify_payment(payload: VerifyPaymentRequest):
 def youtube_playlist_count(url: str):
     try:
         if not YOUTUBE_API_KEY:
-            raise HTTPException(status_code=500, detail="YouTube API key missing")
+            raise HTTPException(status_code=503, detail="YouTube API key missing")
 
         match = re.search(r"list=([a-zA-Z0-9_-]+)", url)
 
@@ -184,6 +200,8 @@ def youtube_playlist_count(url: str):
             "total_videos": total_videos
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -299,6 +317,8 @@ def generate_interview_questions(payload: InterviewRequest):
             "situational": situational
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -396,5 +416,7 @@ async def analyze_complete(
             "learning_resources": learning_resources
         }
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
