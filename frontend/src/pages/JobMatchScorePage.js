@@ -32,7 +32,7 @@ function JobMatchScorePage() {
       formData.append("file", file)
       formData.append("job_description", jobDescription)
 
-      const response = await fetch("http://127.0.0.1:8000/job-match", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/job-match", {
         method: "POST",
         body: formData
       })

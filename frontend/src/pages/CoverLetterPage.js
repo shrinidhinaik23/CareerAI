@@ -21,7 +21,7 @@ function CoverLetterPage() {
       formData.append("role", role)
       formData.append("company", company)
 
-      const response = await fetch("http://127.0.0.1:8000/cover-letter", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/cover-letter", {
         method: "POST",
         body: formData
       })

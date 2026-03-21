@@ -26,7 +26,7 @@ function CareerPathPage() {
       const formData = new FormData()
       formData.append("file", file)
 
-      const response = await fetch("http://127.0.0.1:8000/career-path", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/career-path", {
         method: "POST",
         body: formData
       })

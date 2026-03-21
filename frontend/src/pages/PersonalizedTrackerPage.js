@@ -77,7 +77,7 @@ function PersonalizedTrackerPage() {
   const getYoutubeLessonCount = async (url) => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:8000/youtube-playlist-count?url=${encodeURIComponent(url)}`
+        `https://careerai-backend-fe55.onrender.com/youtube-playlist-count?url=${encodeURIComponent(url)}`
       )
 
       const data = await res.json()

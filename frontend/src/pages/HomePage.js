@@ -59,7 +59,7 @@ function HomePage() {
       formData.append("job_role", targetRole)
       formData.append("job_description", jobDescription)
 
-      const response = await fetch("http://127.0.0.1:8000/analyze-complete", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/analyze-complete", {
         method: "POST",
         body: formData
       })

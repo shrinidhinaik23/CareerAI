@@ -27,7 +27,7 @@ function LinkedinOptimizerPage() {
       formData.append("file", file)
       formData.append("target_role", targetRole)
 
-      const response = await fetch("http://127.0.0.1:8000/linkedin", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/linkedin", {
         method: "POST",
         body: formData
       })

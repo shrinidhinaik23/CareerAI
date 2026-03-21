@@ -56,7 +56,7 @@ function PricingPage() {
     try {
       setLoadingPlan(planName)
 
-      const response = await fetch("http://127.0.0.1:8000/create-order", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/create-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -85,7 +85,7 @@ function PricingPage() {
         order_id: data.orderId,
         handler: async function (paymentResponse) {
           try {
-            const verifyRes = await fetch("http://127.0.0.1:8000/verify-payment", {
+            const verifyRes = await fetch("https://careerai-backend-fe55.onrender.com/verify-payment", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"

@@ -25,7 +25,7 @@ function ATSCheckerPage() {
       const formData = new FormData()
       formData.append("file", file)
 
-      const response = await fetch("http://127.0.0.1:8000/ats-check", {
+      const response = await fetch("https://careerai-backend-fe55.onrender.com/ats-check", {
         method: "POST",
         body: formData
       })
