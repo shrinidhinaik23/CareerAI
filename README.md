@@ -1,186 +1,212 @@
-# CareerAI – AI-Powered Resume Skill Gap Analyzer
+CareerAI — Resume Analysis & Career Guidance Platform
 
-CareerAI is a full-stack web application that helps users analyze resumes against job descriptions, identify missing skills, improve ATS compatibility, generate personalized recommendations, and prepare for interviews using AI-powered insights.
+CareerAI is a full-stack web application that helps users analyze their resumes, identify missing skills, and get actionable suggestions to improve their job readiness.
 
-## Live Demo
-- Frontend: https://career-ai-frontend.vercel.app
-- Backend API: https://careerai-backend-4.onrender.com
-
-## Key Features
-- Resume upload and parsing
-- ATS score analysis
-- Skill gap detection based on job description
-- Personalized learning recommendations
-- Interview question generation
-- Cover letter generation
-- LinkedIn profile optimization suggestions
-- AI chatbot support
-- Razorpay payment integration
-
-## Tech Stack
-**Frontend:** React.js, Tailwind CSS  
-**Backend:** FastAPI, Python  
-**Other Tools:** Razorpay, NLP-based resume/JD analysis, deployment on Vercel and Render
-
-## Screenshots
-![Home Page](assets/home.png)
-![ATS Analysis](assets/ats-analysis.png)
-![Skill Gap Report](assets/skill-gap.png)
-![Interview Questions](assets/interview-questions.png)
-
-## 🧠 How It Works
-
-1. Upload your resume (PDF format)
-2. Enter target role and job description
-3. Backend extracts and processes resume content
-4. System analyzes:
-
-   * Skill match score
-   * Missing skills
-   * ATS readability
-5. Generates:
-
-   * Improvement suggestions
-   * Career path recommendations
-   * Learning resources
-6. Additional tools provide interview questions and profile optimization
+The system processes resumes, compares them with job descriptions, and provides insights such as skill match, missing keywords, and improvement suggestions.
 
 ---
 
-## 🏗️ Architecture Overview
+🚀 Live Demo
 
-User → React Frontend → FastAPI Backend → NLP Processing → Analysis Engine → Response to UI
+- 🌐 Frontend: https://career-ai-chi-six.vercel.app
+- ⚙️ Backend: https://careeraibackend.onrender.com
 
 ---
 
+✨ What This Project Does
 
-## 📂 Project Structure
+- Upload a resume (PDF)
+- Analyze skills present in the resume
+- Compare resume with a job description
+- Calculate skill match score
+- Identify missing skills and keywords
+- Provide suggestions to improve the resume
+- Generate interview questions based on role
+- Provide career path guidance
+- Offer LinkedIn profile improvement tips
+- Integrate Razorpay for premium features
+
+---
+
+📸 Screenshots
+
+🏠 Home Page — Resume Upload
+
+"Home" (./assets/home.png)
+
+📊 Resume Analysis — Skill Match & Suggestions
+
+"Analysis" (./assets/analysis.png)
+
+🧩 Career Tools & Features
+
+"Features" (./assets/features.png)
+
+💳 Payment Integration (Razorpay)
+
+"Payment" (./assets/payment.png)
+
+---
+
+🧠 How It Works
+
+1. User uploads a resume (PDF format)
+2. User enters target role and job description
+3. Backend extracts text from the resume
+4. The system compares:
+   - Resume skills
+   - Job description requirements
+5. It calculates:
+   - Skill match score
+   - Missing skills
+6. Generates:
+   - Suggestions for improvement
+   - Career guidance
+   - Interview questions
+
+---
+
+🏗️ Architecture Overview
+
+User → React Frontend → FastAPI Backend → Resume Processing → Analysis Logic → Response
+
+---
+
+🛠️ Tech Stack
+
+Frontend
+
+- React.js
+- JavaScript
+- CSS
+- Axios
+- Firebase Authentication
+
+Backend
+
+- FastAPI
+- Python
+- spaCy (basic NLP processing)
+- scikit-learn (used for simple analysis tasks)
+- pdfplumber (resume text extraction)
+
+Integrations
+
+- Razorpay (payment)
+- Firebase (authentication)
+- Vercel (frontend deployment)
+- Render (backend deployment)
+
+---
+
+📂 Project Structure
 
 CareerAI/
 ├── frontend/   # React UI
-├── backend/    # FastAPI APIs
-├── CHATBOT/    # Chatbot features
-├── assets/     # Screenshots
+├── backend/    # FastAPI backend
+├── CHATBOT/    # chatbot-related logic
+├── assets/     # screenshots
 └── README.md
 
 ---
 
-## 🔌 Core Features
+🔌 Key Features Implemented
 
-* Resume Parsing
-* ATS Score Evaluation
-* Skill Gap Detection
-* Job Match Analysis
-* Career Path Recommendation
-* Interview Question Generator
-* Cover Letter Generator
-* Resume Keyword Scanner
-* LinkedIn Profile Optimizer
-* Learning Resource Finder
+- Resume parsing from PDF
+- Skill extraction and comparison
+- Job description matching
+- Missing keyword detection
+- Basic ATS-style scoring
+- Career suggestion generation
+- Interview question generation
+- LinkedIn suggestion feature
+- Razorpay payment integration
 
 ---
 
-## ⚙️ Run Locally
+⚙️ Run Locally
 
-### Clone Repository
+Clone Repository
 
-```bash
 git clone https://github.com/shrinidhinaik23/CareerAI.git
 cd CareerAI
-```
 
-### Backend Setup
+Backend Setup
 
-```bash
 cd backend
 pip install -r requirements.txt
-uvicorn main:app --reload
-```
+uvicorn resume:app --reload
 
-### Frontend Setup
+Frontend Setup
 
-```bash
 cd frontend
 npm install
 npm start
-```
 
 ---
 
-## 🔐 Environment Variables
+🔐 Environment Variables
 
-Create `.env` file in backend:
+Create ".env" file in backend:
 
-```env
 RAZORPAY_KEY_ID=your_key
 RAZORPAY_KEY_SECRET=your_secret
 YOUTUBE_API_KEY=your_key
 FIREBASE_CREDENTIALS_PATH=your_path
-```
 
 ---
 
-## ⚡ Performance
+⚡ Performance
 
-* Fast API responses for individual features
-* Complete resume analysis generated within a few seconds
-* Optimized for real-time interaction
-
----
-
-## ⚠️ Limitations
-
-* Accuracy depends on resume format
-* NLP-based matching may miss rare skills
-* Backend cold start delay (free hosting)
-* Limited dataset for skill comparison
+- Most API responses are fast for normal inputs
+- Full resume analysis typically completes within a few seconds
+- Performance depends on resume size and backend cold start
 
 ---
 
-## 🚧 Challenges Faced
+⚠️ Limitations
 
-* Extracting structured data from PDF resumes
-* Matching resumes with job descriptions accurately
-* Handling inconsistent skill keywords
-* Integrating secure payment gateway
-* Managing frontend-backend communication
-
----
-
-## ✅ Solutions Implemented
-
-* Applied NLP preprocessing techniques
-* Designed modular API-based backend
-* Implemented skill matching and gap analysis
-* Integrated Razorpay for secure payments
-* Deployed scalable frontend/backend setup
+- Accuracy depends on resume formatting
+- Skill matching is rule-based / keyword-based
+- Limited dataset for skill comparison
+- Backend hosted on free tier may have cold start delay
 
 ---
 
-## 🚀 Future Improvements
+🚧 Challenges Faced
 
-* Advanced AI-based recommendations
-* Improved ATS scoring algorithm
-* Resume auto-enhancement suggestions
-* Multi-language support
-* Mobile application version
-
----
-
-## 📌 Key Learnings
-
-* Full-stack development (React + FastAPI)
-* NLP-based resume analysis
-* API design and integration
-* Payment gateway integration
-* Real-world deployment practices
+- Extracting clean text from different resume formats
+- Matching resume skills with job descriptions
+- Handling inconsistent or missing keywords
+- Integrating payment system securely
+- Managing frontend and backend deployment
 
 ---
 
-## 👨‍💻 Author
+🚀 Future Improvements
 
-**Shrinidhi Manjunath Naik**
+- Improve skill matching accuracy
+- Add better scoring logic
+- Enhance UI/UX
+- Support more resume formats
+- Expand dataset for better recommendations
 
-* GitHub: https://github.com/shrinidhinaik23
+---
+
+📌 Key Learnings
+
+- Built a full-stack application using React and FastAPI
+- Worked with PDF parsing and basic NLP techniques
+- Designed REST APIs for multiple features
+- Integrated payment gateway (Razorpay)
+- Deployed frontend and backend services
+
+---
+
+👨‍💻 Author
+
+Shrinidhi Manjunath Naik
+
+- GitHub: https://github.com/shrinidhinaik23
 
 ---
