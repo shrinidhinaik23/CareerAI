@@ -1,51 +1,32 @@
-# CareerAI – AI-Powered Resume Analyzer & Career Guidance Platform
+# CareerAI – AI-Powered Resume Skill Gap Analyzer
 
-CareerAI is a full-stack AI-powered web application that analyzes resumes, identifies skill gaps, checks ATS compatibility, compares resumes against job descriptions, and recommends personalized learning resources.
+CareerAI is a full-stack web application that helps users analyze resumes against job descriptions, identify missing skills, improve ATS compatibility, generate personalized recommendations, and prepare for interviews using AI-powered insights.
 
 ## Live Demo
-- **Frontend:** https://career-ai-chi-six.vercel.app
-- **Backend:** https://careerai-backend-fe55.onrender.com
+- Frontend: https://career-ai-frontend.vercel.app
+- Backend API: https://careerai-backend-4.onrender.com
 
-## Key Highlights
-- Resume parsing and skill extraction from PDF resumes
-- ATS score analysis and keyword optimization
-- Job description matching and missing keyword detection
-- Skill gap identification with improvement suggestions
-- Career guidance and learning resource recommendations
+## Key Features
+- Resume upload and parsing
+- ATS score analysis
+- Skill gap detection based on job description
+- Personalized learning recommendations
 - Interview question generation
 - Cover letter generation
-- LinkedIn profile optimization
-- Razorpay payment integration
+- LinkedIn profile optimization suggestions
 - AI chatbot support
+- Razorpay payment integration
 
 ## Tech Stack
-**Frontend:** React.js, HTML, CSS, JavaScript  
-**Backend:** FastAPI, Python, REST APIs  
-**AI/NLP:** spaCy  
-**Database:** Firebase  
-**Payments:** Razorpay  
-**Deployment:** Vercel, Render
+**Frontend:** React.js, Tailwind CSS  
+**Backend:** FastAPI, Python  
+**Other Tools:** Razorpay, NLP-based resume/JD analysis, deployment on Vercel and Render
 
-
-## 📸 Screenshots
-
-### 🏠 Home Page — Resume Upload
-
-![Home](./assets/home.png)
-
-### 📊 Resume Analysis — Skill Match & Suggestions
-
-![Analysis](./assets/analysis.png)
-
-### 🧩 Career Tools & Features
-
-![Features](./assets/features.png)
-
-### 💳 Payment Integration (Razorpay)
-
-![Payment](./assets/payment.png)
-
----
+## Screenshots
+![Home Page](assets/home.png)
+![ATS Analysis](assets/ats-analysis.png)
+![Skill Gap Report](assets/skill-gap.png)
+![Interview Questions](assets/interview-questions.png)
 
 ## 🧠 How It Works
 
