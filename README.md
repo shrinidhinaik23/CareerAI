@@ -32,19 +32,19 @@ The system processes resumes, compares them with job descriptions, and provides 
 
 🏠 Home Page — Resume Upload
 
-[!Home](./assets/home.png)
+![Home](./assets/home.png)
 
 📊 Resume Analysis — Skill Match & Suggestions
 
-[!Analysis](./assets/analysis.png)
+![Analysis](./assets/analysis.png)
 
 🧩 Career Tools & Features
 
-[!Features](./assets/features.png)
+![Features](./assets/features.png)
 
 💳 Payment Integration (Razorpay)
 
-[!Payment](./assets/payment.png)
+![Payment](./assets/payment.png)
 
 ---
 
