@@ -1,30 +1,31 @@
-# CareerAI — AI-Powered Resume Analyzer & Career Intelligence Platform
+# CareerAI – AI-Powered Resume Analyzer & Career Guidance Platform
 
-CareerAI is a full-stack web application that analyzes resumes, evaluates ATS compatibility, identifies missing skills, and provides personalized career guidance with real-time insights.
+CareerAI is a full-stack AI-powered web application that analyzes resumes, identifies skill gaps, checks ATS compatibility, compares resumes against job descriptions, and recommends personalized learning resources.
 
----
+## Live Demo
+- **Frontend:** https://career-ai-chi-six.vercel.app
+- **Backend:** https://careerai-backend-fe55.onrender.com
 
-## 🚀 Live Demo
+## Key Highlights
+- Resume parsing and skill extraction from PDF resumes
+- ATS score analysis and keyword optimization
+- Job description matching and missing keyword detection
+- Skill gap identification with improvement suggestions
+- Career guidance and learning resource recommendations
+- Interview question generation
+- Cover letter generation
+- LinkedIn profile optimization
+- Razorpay payment integration
+- AI chatbot support
 
-* 🌐 Frontend: https://career-ai-chi-six.vercel.app
-* ⚙️ Backend: https://careeraibackend.onrender.com
+## Tech Stack
+**Frontend:** React.js, HTML, CSS, JavaScript  
+**Backend:** FastAPI, Python, REST APIs  
+**AI/NLP:** spaCy  
+**Database:** Firebase  
+**Payments:** Razorpay  
+**Deployment:** Vercel, Render
 
----
-
-## ✨ Key Highlights
-
-* 📄 Upload resume and analyze instantly
-* 📊 Skill match score with detailed insights
-* ❌ Missing skills identification
-* 🧠 Career path recommendations
-* 📝 ATS readability analysis
-* 🎯 Interview question generation
-* 🔍 Resume keyword scanning
-* 💼 LinkedIn profile optimization
-* 💳 Razorpay payment integration
-* 📚 Learning resource suggestions
-
----
 
 ## 📸 Screenshots
 
@@ -71,32 +72,6 @@ User → React Frontend → FastAPI Backend → NLP Processing → Analysis Engi
 
 ---
 
-## 🛠️ Tech Stack
-
-### Frontend
-
-* React.js
-* JavaScript
-* CSS
-* Axios
-* Firebase Authentication
-
-### Backend
-
-* FastAPI
-* Python
-* spaCy (NLP)
-* scikit-learn
-* pdfplumber
-
-### Integrations
-
-* Razorpay (Payments)
-* Firebase (Authentication)
-* Vercel (Frontend Deployment)
-* Render (Backend Deployment)
-
----
 
 ## 📂 Project Structure
 
